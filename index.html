@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Users, posts and comments...</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="header--title">Users, posts and comments...</h1>
+        </header>
+        <div class="grid">
+            <div class="grid--cell grid--users">
+                <h2 class="header--subtitle">Last Users</h2>
+                <div id="template-users-reload-container"></div>
+                <div id="template-users-container" class="grid--users--content"></div>
+            </div>
+            <div class="grid--cell grid--posts">
+                <h2 class="header--subtitle">Last Posts</h2>
+                <div id="template-pagination-posts-container"></div>
+                <div id="template-posts-container" class="grid--posts--content"></div>
+            </div>
+            <div class="grid--cell grid--comments">
+                <h2 class="header--subtitle">Last Comments</h2>
+                <div id="template-pagination-comments-container"></div>
+                <div id="template-comments-container" class="grid--comments--content"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/mypubsub.js"></script>
+<script src="js/getresources.js"></script>
+<script src="js/page.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ractive/ractive.js"></script>
+<!--PAGINATION-->
+<script id="template-pagination" type="text/ractive">
+    <div class="template--pagination">
+        <button class="page--button" on-click="onclick(1)" disabled='{{isFirst()}}'>&laquo;</button>
+        <button class="page--button" on-click="onclick((page-1))" disabled='{{isFirst()}}'>&lsaquo;</button>
+        <span class="page--status">{{page}} - {{length}}</span>
+        <button class="page--button" on-click="onclick((page+1))" disabled='{{isLast()}}'>&rsaquo;</button>
+        <button class="page--button" on-click="onclick((length ))" disabled='{{isLast()}}'>&raquo;</button>
+    </div>
+</script>
+<!--USERS RELOAD BUTTON-->
+<script id="template-users-reload" type="text/ractive">
+    <div class="template--users--reload">
+        <button on-click="onclick()" class="page-button">&#8634;</button>
+    </div>
+</script>
+<!--USERS-->
+<script id="template-users" type="text/ractive">
+    {{#each results}}
+    <span class="template--items">{{email}}</span> {{else}}
+    <p>Nothing here!</p>
+    {{/each}}
+</script>
+<!--COMMENTS-->
+<script id="template-comments" type="text/ractive">
+    {{#each results}}
+    <span class="template--items">
+        {{id}} - <b>{{name}} :</b> <span>{{body}}</span>
+    </span>
+    {{else}}
+    <p>Nothing here!</p>
+    {{/each}}
+</script>
+<!--POSTS-->
+<script id="template-posts" type="text/ractive">
+    {{#each results}}
+    <span class="template--items">
+          <b>{{title}} :</b> <span>{{body}}</span>
+    </span>
+    {{else}}
+    <p>Nothing here!</p>
+    {{/each}}
+</script>
+
+</html>

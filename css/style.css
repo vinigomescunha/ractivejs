@@ -1,0 +1,77 @@
+ .container {
+   max-width: 80vw;
+   margin: 0 auto;
+ }
+
+ header {
+   min-height: 5vw;
+   text-align: center;
+ }
+
+ .header--title {
+   font-size: 5vw;
+   margin: 0;
+   line-height: 100%;
+ }
+
+ .header--subtitle {
+   font-size: 1.5rem;
+   margin: 0;
+ }
+
+ .grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-gap: .5vh .5vw;
+   grid-auto-columns: minmax(16vw, auto);
+   grid-auto-rows: calc(18.5vh - .6rem);
+ }
+
+ .grid--cell {
+   border: .2rem double #666666;
+   border-radius: .5rem;
+   padding: 1.5vw;
+   overflow-y: auto;
+ }
+
+ .grid--users {
+   grid-column: 3 / 4;
+   grid-row: 1 / 3;
+ }
+
+ .grid--posts {
+   grid-column: 1 / 4;
+   grid-row: 3 / 6;
+ }
+
+ .grid--comments {
+   grid-column: 1 / 3;
+   grid-row: 1 / 3;
+ }
+
+ .template--items {
+   display: block;
+   word-break: break-all;
+ }
+
+ .template--items:nth-child(odd) {
+   background-color: hsla(60, 64%, 34%, 0.5);
+ }
+
+ .template--pagination,
+ .template--users--reload {
+   text-align: right;
+   background: #333333;
+   padding: .5vw;
+   color: #ffffff;
+   margin: .5vw 0;
+ }
+
+ .page--button {
+   padding: 0rem .5rem;
+   font-size: 1.5rem;
+ }
+
+ .page--status {
+   font-size: 1.3rem;
+ }
